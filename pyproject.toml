@@ -1,0 +1,31 @@
+[project]
+name = "residencial-aurora"
+version = "1.0.0"
+description = "Assistente virtual do Residencial Aurora"
+requires-python = ">=3.12"
+dependencies = [
+    "google-adk==2.2.0",
+    "fastapi>=0.115.0",
+    "uvicorn>=0.32.0",
+    "python-dotenv>=1.0.1",
+]
+
+[project.scripts]
+aurora-api = "aurora.main:main"
+aurora-restaurar = "aurora.dados.restaurar:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.0",
+    "httpx>=0.27.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["aurora"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
